@@ -15,8 +15,8 @@ def where_user():
     """
     To find where user is
     """
-    ask_for_input = input("Enter your coordinates: ")
-    ask_for_year = input("Enter year: ")
+    ask_for_input = input("Please enter your location (format: lat, long): ")
+    ask_for_year = input("Please enter a year you would like to have a map for: ")
     app = Nominatim(user_agent="tutorial")
     return ask_for_input, ask_for_year
 
@@ -115,7 +115,8 @@ def map_work(file, year, user_inp):
     map.add_child(fg_pp)
     map.add_child(fg_today)
     map.add_child(folium.LayerControl())
-    return map.save("Map_2.html")
+    map.save("Your_map.html")
+    return 'Finished. Please have look at the Your_map.html'
 
 
 def last_func(file):
@@ -125,10 +126,8 @@ def last_func(file):
         return "Error, try again"
     else:
         try:
-            int(user_data[1])
-        except ValueError:
-            return "Error, try again"
-        try:
+            print("Map is generating...")
+            print("Please wait...")
             return map_work(file, user_data[1], user_data[0].split(','))
         except ValueError:
             return "Error, try again"
