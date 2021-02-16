@@ -11,6 +11,8 @@ from geopy.exc import GeocoderUnavailable
 from geopy.distance import geodesic
 from datetime import date
 
+geopy.geocoders.options.default_timeout = 30
+
 def where_user():
     """
     To find where user is
@@ -131,5 +133,5 @@ def last_func(file):
             return map_work(file, user_data[1], user_data[0].split(','))
         except ValueError:
             return "Error, try again"
-print(last_func('locations_smaller'))
+print(last_func('locations.list'))
     
